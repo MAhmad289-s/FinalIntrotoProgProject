@@ -1,13 +1,34 @@
 package org.example;
 
+import lombok.*;
+
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 public class Address {
     int streetNo;
     String street;
     String city;
     Province province;
+    String postalCode;
 
-
-
+    public Address(int streetNo, String street, String city, Province province, String postalCode) {
+        if (isPostalCodeValid(postalCode)) {
+            this.streetNo = streetNo;
+            this.street = street;
+            this.city = city;
+            this.province = province;
+            this.postalCode = postalCode.toUpperCase();
+        }
+        else {
+            this.streetNo = -1;
+            this.street = null;
+            this.city = null;
+            this.province = null;
+            this.postalCode = null;
+        }
+    }
     public enum Province{
         Ontario,Quebec, Nova ,Scotia, New_Brunswick, Manitoba, British_Columbia, Prince_Edward_Island, Saskatchewan, Alberta, Newfoundland, Labrador
     }
