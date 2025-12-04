@@ -7,8 +7,5 @@ public class Main {
         Address address = new Address(19,"Pok,","Montreal"
                 , Address.Province.Quebec,"H3X2M5");
         System.out.println(address);
-
-
-
     }
 }
