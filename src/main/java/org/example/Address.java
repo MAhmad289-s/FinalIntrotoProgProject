@@ -32,8 +32,14 @@ public class Address {
     public enum Province{
         Ontario,Quebec, Nova ,Scotia, New_Brunswick, Manitoba, British_Columbia, Prince_Edward_Island, Saskatchewan, Alberta, Newfoundland, Labrador
     }
+
+    /**
+     * Checks to see if the postal code has one letter then one digit
+     * @param postalCode The given postal code
+     * @return true for a valid postal code and false for an invalid postal codee
+     */
     public static boolean isPostalCodeValid(String postalCode){
-        if (postalCode.length() !=6 || postalCode == null){
+        if (postalCode.length() != 6){
             return false;
         }
         for (int i = 0; i < 6;i++){
