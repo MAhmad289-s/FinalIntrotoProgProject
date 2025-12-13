@@ -1,5 +1,6 @@
 package org.example;
 
+import jdk.jshell.execution.Util;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,23 +19,26 @@ public class Assignment {
     private ArrayList<Integer> scores;
     private static int nextId = 1;
 
+    public Assignment(String assignmentName, double weight, int maxScore) {
+        this.assignmentId = String.format("%02d", nextId++);
+        this.assignmentName = assignmentName;
+        this.weight = weight;
+        this.scores = new ArrayList<>();
+    }
     /**Calculates the average score for this assignment.
      *
      */
     public void calcAssignmentAvg() {
-        if (!scores.isEmpty()) {
-            int sum = 0;
-            for (Integer s : scores) {
-                if (s != null) {
-                    sum += s;
-                }
+        int sum = 0;
+        int count = 0;
+        for (Integer s : scores) {
+            if (s != null) {
+                sum += s;
+                count++;
             }
-            double avg = (double) sum / scores.size();
-        } else {
-            return;
         }
+        int avg = (count == 0) ? 0 : (int) Math.round((double) sum / count);
     }
-
     /**
      * Generates random scores for all students in this assignment.
      */
@@ -57,7 +61,6 @@ public class Assignment {
             scores.set(i, score);
         }
     }
-
     @Override
     public String toString() {
         return "Assignment{" +
