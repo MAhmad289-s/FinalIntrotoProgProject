@@ -11,7 +11,6 @@ import java.util.Random;
 
 @Getter
 @Setter
-@ToString
 @EqualsAndHashCode
 public class Assignment {
     private String assignmentId;
@@ -26,7 +25,7 @@ public class Assignment {
         this.weight = weight;
         this.scores = new ArrayList<>();
     }
-    /**Calculates the average score for this assignment.
+    /**Calculates the average score for assignments if not null.
      *
      */
     public void calcAssignmentAvg() {
