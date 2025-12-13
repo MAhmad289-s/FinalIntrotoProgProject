@@ -22,12 +22,18 @@ public class Student {
      * @param course The course to be assigned
      * @return true if the course is successfully registered; false otherwise.
      */
-    public boolean registerCourse(Course course) {
-        if (registeredCourses.contains(course)) {
-            return false;
+    boolean registerCourse(Course course) {
+        for (Course c : registeredCourses) {
+            if (c.equals(course)) {
+                return false;
+            }
         }
         registeredCourses.add(course);
         course.getRegisteredStudents().add(this);
+        int studentIndex = course.getRegisteredStudents().size() - 1;
+        for (Assignment assignment : course.getAssignments()) {
+            assignment.getScores().add(studentIndex, null);
+        }
         return true;
     }
     /**
