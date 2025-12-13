@@ -28,10 +28,8 @@ public class Course {
         this.assignments = new ArrayList<>();
         this.registeredStudents = new ArrayList<>();
         this.finalScores = new ArrayList<>();
-        this.courseId = "C-" + department.getDepartmentId()
-                + "-" + String.format("%02d", nextId++);
+        this.courseId = "C-" + department.getDepartmentId() + "-" + String.format("%02d", nextId++);
     }
-
     /**
      * Checks if the Assignment sum of weights is equal to 100
      * @return
