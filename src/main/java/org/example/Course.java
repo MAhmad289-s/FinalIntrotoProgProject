@@ -1,5 +1,6 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +20,17 @@ public class Course {
     private ArrayList<Student> registeredStudents;
     private ArrayList<Integer> finalScores;
     private static int nextId = 1;
+
+    public Course(String courseName, double credits, Department department) {
+        this.courseName = Util.toTitleCase(courseName);
+        this.credits = credits;
+        this.department = department;
+        this.assignments = new ArrayList<>();
+        this.registeredStudents = new ArrayList<>();
+        this.finalScores = new ArrayList<>();
+        this.courseId = "C-" + department.getDepartmentId()
+                + "-" + String.format("%02d", nextId++);
+    }
 
     /**
      * Checks if the Assignment sum of weights is equal to 100

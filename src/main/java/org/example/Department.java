@@ -20,14 +20,12 @@ public class Department {
      * @return true or false
      */
     public static boolean isDepartmentNameValid(String departmentName) {
-        if (departmentName == null) {
-            return false;
-        }
-        for (int i = 0; i < departmentName.length(); i++) {
-            char c = departmentName.charAt(i);
-            if (!Character.isLetter(c) && c != ' ') {
-                return false;
-            }
+        if (departmentName == null) return false;
+        String s = departmentName.trim();
+        if (s.isEmpty()) return false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (!(Character.isLetter(c) || c == ' ')) return false;
         }
         return true;
     }
