@@ -63,6 +63,13 @@ public class Course {
         }
         return averages;
     }
+    /**
+     * Adds a new assignment to the course
+     * @param assignmentName Name of the Assignment
+     * @param weight The weightage of the Asignment
+     * @param maxScore The Max score poible
+     * @return true or false for the Assignment being added ro no
+     */
     public boolean addAssignment(String assignmentName, double weight, int maxScore) {
         Assignment a = new Assignment(assignmentName, weight, maxScore);
         for (int i = 0; i < registeredStudents.size(); i++) {
@@ -70,5 +77,73 @@ public class Course {
         }
         assignments.add(a);
         return true;
+    }
+    /**
+     * Calculates Assignment Averages
+     * @param assignment The assignment
+     * @return Assignments averages
+     */
+    private int calcAssignmentAverage(Assignment assignment) {
+        int sum = 0;
+        int count = 0;
+        for (Integer score : assignment.getScores()) {
+            if (score != null) {
+                sum += score;
+                count++;
+            }
+        }
+        return (count == 0) ? 0 : (int) Math.round((double) sum / count);
+    }
+
+    /**
+     * generates random scores for each assignment and student, and calculates the final score for each student.
+     */
+    public void generateScores() {
+        for (Assignment a : assignments) {
+            a.generateRandomScore();
+        }
+        int[] avgs = calcStudentsAverage();
+        for (int i = 0; i < avgs.length; i++) {
+            finalScores.set(i, avgs[i]);
+        }
+    }
+
+    /**
+     * Displays score course in a table format
+     */
+    public void displayScores() {
+        System.out.println("Course: " + courseName + "(" + courseId + ")");
+        System.out.printf("%-25s", "");
+        for (Assignment a : assignments) {
+            System.out.printf("%-15s", a.getAssignmentName());
+        }
+        System.out.printf("%-15s%n", "Final Score");
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            Student s = registeredStudents.get(i);
+            System.out.printf("%-25s", s.getStudentName());
+            for (Assignment a : assignments) {
+                System.out.printf("%-15d", a.getScores().get(i));
+            }
+            System.out.printf("%-15d%n", finalScores.get(i));
+        }
+        System.out.printf("%-25s", "Average");
+        for (Assignment a : assignments) {
+            System.out.printf("%-15d", calcAssignmentAverage(a));
+        }
+        System.out.println();
+    }
+    public String toSimplifiedString() {
+        return courseId + " | " + courseName + " | " + credits + " | " + department.getDepartmentName();
+    }
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseId='" + courseId + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", credits=" + credits +
+                ", department=" + department +
+                ", assignments=" + assignments +
+                ", registeredStudents=" + registeredStudents +
+                '}';
     }
 }
