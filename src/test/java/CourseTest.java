@@ -32,5 +32,15 @@ public class CourseTest {
         int[] expected = {80};
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
+    @DisplayName("Add assignment with no students -> scores list empty")
+    void addAssignment1() {
+        Department department = new Department("CS");
+        Course course = new Course("Programming", 3.0, department);
+        course.addAssignment("Assignment1", 100, 100);
+        int actual = course.getAssignments().get(0).getScores().size();
+        int expected = 0;
+        Assertions.assertEquals(expected, actual);
+    }
 
 }
