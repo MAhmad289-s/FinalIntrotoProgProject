@@ -12,7 +12,6 @@ public class Department {
     private String departmentId;
    @Setter private String departmentName;
     public static int nextId = 1;
-
     public Department(String departmentName) {
         if (!isDepartmentNameValid(departmentName)) {
             this.departmentId = null;
@@ -22,7 +21,12 @@ public class Department {
             this.departmentName = departmentName;
         }
     }
-
+    /**
+     * checks if a department name is valid or not,
+     * a department name should only contain letters or space
+     * @param departmentName The department name input.
+     * @return true or false
+     */
     public static boolean isDepartmentNameValid(String departmentName) {
         if (departmentName == null) {
             return false;

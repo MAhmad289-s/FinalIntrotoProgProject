@@ -12,7 +12,6 @@ public class Address {
     String city;
     Province province;
     String postalCode;
-
     public Address(int streetNo, String street, String city, Province province, String postalCode) {
         if (isPostalCodeValid(postalCode)) {
             this.streetNo = streetNo;
@@ -32,7 +31,6 @@ public class Address {
     public enum Province{
         Ontario,Quebec, Nova ,Scotia, New_Brunswick, Manitoba, British_Columbia, Prince_Edward_Island, Saskatchewan, Alberta, Newfoundland, Labrador
     }
-
     /**
      * Checks to see if the postal code has one letter then one digit
      * @param postalCode The given postal code
