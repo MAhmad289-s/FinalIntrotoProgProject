@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -39,7 +38,6 @@ public class Course {
         for (Assignment a : assignments) sum += a.getWeight();
         return sum == 100.0;
     }
-
     /**
      * Adds a student to the student list of the course,also a new null element
      * to each assignment of this course and a for finl scores
@@ -117,7 +115,6 @@ public class Course {
             finalScores.set(i, avgs[i]);
         }
     }
-
     /**
      * Displays score course in a table format
      */
