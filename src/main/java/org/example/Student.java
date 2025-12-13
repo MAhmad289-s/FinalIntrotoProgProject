@@ -17,7 +17,6 @@ public class Student {
     private ArrayList<Course> registeredCourses;
     private static int nextId = 1;
     public enum Gender {MALE, FEMALE}
-
     /** * Registers a course for this student.
      *
      * @param course The course to be assigned
@@ -31,7 +30,6 @@ public class Student {
         course.getRegisteredStudents().add(this);
         return true;
     }
-
     /**
      * Drops the course
      * @param course the course to be dropped

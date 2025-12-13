@@ -1,7 +1,16 @@
 package org.example;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 public class Assignment {
     private String assignmentId;
     private String assignmentName;
