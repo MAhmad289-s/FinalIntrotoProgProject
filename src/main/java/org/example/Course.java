@@ -1,10 +1,8 @@
 package org.example;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.ArrayList;
-import java.util.Collection;
 
 @Setter
 @Getter
@@ -47,8 +45,8 @@ public class Course {
     public boolean registerStudent(Student student) {
         if (registeredStudents.contains(student)) return false;
         registeredStudents.add(student);
-        for (Assignment a : assignments) {
-            a.getScores().add(null);
+        for (Assignment assignment : assignments) {
+            assignment.getScores().add(null);
         }
         finalScores.add(null);
         return true;
@@ -61,10 +59,10 @@ public class Course {
         int[] averages = new int[registeredStudents.size()];
         for (int i = 0; i < registeredStudents.size(); i++) {
             double total = 0.0;
-            for (Assignment a : assignments) {
-                Integer score = a.getScores().get(i);
+            for (Assignment assignment : assignments) {
+                Integer score = assignment.getScores().get(i);
                 if (score != null) {
-                    total += score * (a.getWeight() / 100.0);
+                    total += score * (assignment.getWeight() / 100.0);
                 }}
             averages[i] = (int) Math.round(total);
         }
@@ -106,12 +104,12 @@ public class Course {
      * generates random scores for each assignment and student, and calculates the final score for each student.
      */
     public void generateScores() {
-        for (Assignment a : assignments) {
-            a.generateRandomScore();
+        for (Assignment assignment : assignments) {
+            assignment.generateRandomScore();
         }
-        int[] avgs = calcStudentsAverage();
-        for (int i = 0; i < avgs.length; i++) {
-            finalScores.set(i, avgs[i]);
+        int[] averages = calcStudentsAverage();
+        for (int i = 0; i < averages.length; i++) {
+            finalScores.set(i, averages[i]);
         }
     }
     /**
