@@ -14,5 +14,6 @@ public class Course {
     }
 
     public Object getDepartment() {
+        return null;
     }
 }
