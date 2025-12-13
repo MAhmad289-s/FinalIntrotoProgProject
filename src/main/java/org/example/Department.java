@@ -1,12 +1,19 @@
 package org.example;
 
 public class Department {
-    private String departmentId;      // D01, D02, ...
+    private String departmentId;
     private String departmentName;
     public static int nextId = 1;
 
-
-
+    public Department(String departmentName) {
+        if (!isDepartmentNameValid(departmentName)) {
+            this.departmentId = null;
+            this.departmentName = null;
+        } else {
+            this.departmentId = String.format("D%02d", nextId++);
+            this.departmentName = departmentName;
+        }
+    }
 
     public static boolean isDepartmentNameValid(String departmentName) {
         if (departmentName == null) {
