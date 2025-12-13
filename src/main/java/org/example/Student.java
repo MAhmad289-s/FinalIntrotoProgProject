@@ -23,8 +23,8 @@ public class Student {
      * @return true if the course is successfully registered; false otherwise.
      */
     boolean registerCourse(Course course) {
-        for (Course c : registeredCourses) {
-            if (c.equals(course)) {
+        for (Course i : registeredCourses) {
+            if (i.equals(course)) {
                 return false;
             }
         }
