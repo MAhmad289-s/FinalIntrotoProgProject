@@ -17,7 +17,7 @@ public class Student {
     private ArrayList<Course> registeredCourses;
     private static int nextId = 1;
     public enum Gender {MALE, FEMALE}
-    /** * Registers a course for this student.
+    /** * Registers a coursee for this student.
      *
      * @param course The course to be assigned
      * @return true if the course is successfully registered; false otherwise.
