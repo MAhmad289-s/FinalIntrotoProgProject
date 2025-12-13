@@ -12,21 +12,21 @@ public class CourseTest {
     void registerStudent1() {
         Department department = new Department("Math");
         Course course = new Course("Calculus", 3.0, department);
-        Address a = new Address(1, "Main St", "Toronto", Address.Province.Quebec, "hzx4m5");
-        Student s = new Student("John Doe", Student.Gender.MALE, a, department);
+        Address a = new Address(1, "Coolbrooke", "Montreal", Address.Province.Quebec, "hzx4m5");
+        Student s = new Student("Yi Wang", Student.Gender.MALE, a, department);
         boolean actual = course.registerStudent(s);
         boolean expected = true;
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("Single student, single assignment -> correct weighted average")
+    @DisplayName("Single student, single assignment -> average")
     void calcStudentsAverage1() {
         Department d = new Department("Math");
-        Course c = new Course("Algebra", 3.0, d);
-        Address a = new Address(1, "Main St", "Toronto", Address.Province.Quebec, "A1B2C3");
-        Student s = new Student("John Doe", Student.Gender.MALE, a, d);
+        Course c = new Course(" Linear Algebra", 3.0, d);
+        Address a = new Address(1, "Coolbrooke", "Montreal", Address.Province.Quebec, "h435mz");
+        Student s = new Student("Yi Wang", Student.Gender.MALE, a, d);
         c.registerStudent(s);
-        c.addAssignment("Test1", 100, 100);
+        c.AddAssignment("Test1", 100, 100);
         c.getAssignments().get(0).getScores().set(0, 80);
         int[] actual = c.calcStudentsAverage();
         int[] expected = {80};
@@ -37,7 +37,7 @@ public class CourseTest {
     void addAssignment1() {
         Department department = new Department("CS");
         Course course = new Course("Programming", 3.0, department);
-        course.addAssignment("Assignment1", 100, 100);
+        course.AddAssignment("Assignment1", 100, 100);
         int actual = course.getAssignments().get(0).getScores().size();
         int expected = 0;
         Assertions.assertEquals(expected, actual);

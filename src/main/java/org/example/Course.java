@@ -118,8 +118,8 @@ public class Course {
     public void displayScores() {
         System.out.println("Course: " + courseName + "(" + courseId + ")");
         System.out.printf("%-25s", "");
-        for (Assignment a : assignments) {
-            System.out.printf("%-15s", a.getAssignmentName());
+        for (Assignment assignment : assignments) {
+            System.out.printf("%-15s", assignment.getAssignmentName());
         }
         System.out.printf("%-15s%n", "Final Score");
         for (int i = 0; i < registeredStudents.size(); i++) {
