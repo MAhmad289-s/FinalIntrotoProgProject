@@ -1,5 +1,6 @@
 package org.example;
 
+import jdk.jshell.execution.Util;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,15 +13,6 @@ public class Department {
     private String departmentId;
    @Setter private String departmentName;
     public static int nextId = 1;
-    public Department(String departmentName) {
-        if (!isDepartmentNameValid(departmentName)) {
-            this.departmentId = null;
-            this.departmentName = null;
-        } else {
-            this.departmentId = String.format("D%02d", nextId++);
-            this.departmentName = departmentName;
-        }
-    }
     /**
      * checks if a department name is valid or not,
      * a department name should only contain letters or space
@@ -38,5 +30,14 @@ public class Department {
             }
         }
         return true;
+    }
+    public Department(String departmentName) {
+        if (!isDepartmentNameValid(departmentName)) {
+            this.departmentId = null;
+            this.departmentName = null;
+            return;
+        }
+        this.departmentId = "D" + String.format("%02d", nextId++);
+        this.departmentName = departmentName;
     }
 }
