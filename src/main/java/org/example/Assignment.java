@@ -9,6 +9,9 @@ public class Assignment {
     private ArrayList<Integer> scores;
     private static int nextId = 1;
 
+    /**Calculates the average score for this assignment.
+     *
+     */
     public void calcAssignmentAvg() {
         if (!scores.isEmpty()) {
             int sum = 0;
@@ -22,6 +25,10 @@ public class Assignment {
             return;
         }
     }
+
+    /**
+     * Generates random scores for all students in this assignment.
+     */
     public void generateRandomScore() {
         java.util.Random rand = new java.util.Random();
         for (int i = 0; i < scores.size(); i++) {
@@ -42,6 +49,12 @@ public class Assignment {
         }
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Assignment{" +
+                "assignmentId='" + assignmentId + '\'' +
+                ", assignmentName='" + assignmentName + '\'' +
+                ", weight=" + weight +
+                '}';
+    }
 }

@@ -18,6 +18,11 @@ public class Student {
     private static int nextId = 1;
     public enum Gender {MALE, FEMALE}
 
+    /** * Registers a course for this student.
+     *
+     * @param course The course to be assigned
+     * @return true if the course is successfully registered; false otherwise.
+     */
     public boolean registerCourse(Course course) {
         if (registeredCourses.contains(course)) {
             return false;
@@ -26,6 +31,12 @@ public class Student {
         course.getRegisteredStudents().add(this);
         return true;
     }
+
+    /**
+     * Drops the course
+     * @param course the course to be dropped
+     * @return  true if the course is successfully dropped; false otherwise
+     */
     public boolean dropCourse(Course course) {
         if (!registeredCourses.contains(course)) {
             return false;
