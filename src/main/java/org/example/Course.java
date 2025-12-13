@@ -1,5 +1,4 @@
 package org.example;
-
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,6 +18,7 @@ public class Course {
     private ArrayList<Student> registeredStudents;
     private ArrayList<Integer> finalScores;
     private static int nextId = 1;
+    private int maxScore;
 
     public Course(String courseName, double credits, Department department) {
         this.courseName = Util.toTitleCase(courseName);
@@ -35,7 +35,7 @@ public class Course {
      */
     public boolean isAssignmentWeightValid() {
         double sum = 0.0;
-        for (Assignment a : assignments) sum += a.getWeight();
+        for (Assignment assignment : assignments) sum += assignment.getWeight();
         return sum == 100.0;
     }
     /**
@@ -65,8 +65,7 @@ public class Course {
                 Integer score = a.getScores().get(i);
                 if (score != null) {
                     total += score * (a.getWeight() / 100.0);
-                }
-            }
+                }}
             averages[i] = (int) Math.round(total);
         }
         return averages;
@@ -78,12 +77,12 @@ public class Course {
      * @param maxScore The Max score poible
      * @return true or false for the Assignment being added ro no
      */
-    public boolean addAssignment(String assignmentName, double weight, int maxScore) {
-        Assignment a = new Assignment(assignmentName, weight, maxScore);
+    public boolean AddAssignment(String assignmentName, double weight, int maxScore) {
+        Assignment assignment = new Assignment(assignmentName, weight, maxScore);
         for (int i = 0; i < registeredStudents.size(); i++) {
-            a.getScores().add(null);
+            assignment.getScores().add(null);
         }
-        assignments.add(a);
+        assignments.add(assignment);
         return true;
     }
     /**
