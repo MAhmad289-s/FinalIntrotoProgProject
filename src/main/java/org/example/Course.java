@@ -39,8 +39,8 @@ public class Course {
     /**
      * Adds a student to the student list of the course,also a new null element
      * to each assignment of this course and a for finl scores
-     * @param student The student Class
-     * @return true or false
+     * @param student The student specified
+     * @return true if student registered r false if not
      */
     public boolean registerStudent(Student student) {
         if (registeredStudents.contains(student)) return false;
@@ -53,16 +53,16 @@ public class Course {
     }
     /**
      * calculates the weighted average score of a student.
-     * @return the weighted average
+     * @return the weighted average of a student
      */
     public int[] calcStudentsAverage() {
         int[] averages = new int[registeredStudents.size()];
         for (int i = 0; i < registeredStudents.size(); i++) {
-            double total = 0.0;
+            double total = 0;
             for (Assignment assignment : assignments) {
                 Integer score = assignment.getScores().get(i);
                 if (score != null) {
-                    total += score * (assignment.getWeight() / 100.0);
+                    total += score * (assignment.getWeight() / 100);
                 }}
             averages[i] = (int) Math.round(total);
         }
