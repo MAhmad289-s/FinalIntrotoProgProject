@@ -18,13 +18,11 @@ public class Util {
                 String lower = word.toLowerCase();
                 char firstChar = Character.toUpperCase(lower.charAt(0));
                 String rest = lower.substring(1);
-
                 if (result.length() > 0) {
                     result.append(" ");
                 }
                 result.append(firstChar).append(rest);
             }
-
             return result.toString();
         }
 }
